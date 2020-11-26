@@ -1,5 +1,4 @@
 import numpy as np
-import cv2
 import matplotlib.pyplot as plt
 
 I = plt.imread("cameraman.tif")
@@ -11,8 +10,6 @@ plt.show()
 
 TFD2_I = np.fft.fft2(I)
 TFD2_I_centree = np.fft.fftshift(TFD2_I)
-
-
 
 plt.figure(2)
 np.seterr(divide = 'ignore')
@@ -220,7 +217,7 @@ def detection(seuil, IT, image):
 
 # Detection du tatouage
 
-detection(65,TFD_tatouee,image_tatouee_inverse)
+detection(65, TFD_tatouee, image_tatouee_inverse)
 
 #  Nouveau tatouage et test de la correlation
 
@@ -229,7 +226,7 @@ T1 = np.cos(np.random.rand(K, 1)) # Nouveau tatouage
 TFD2_I2 = np.fft.fft2(I)
 TFD2_I_centree2 = np.fft.fftshift(TFD2_I2)
 
-TFD2_I2_tatoue = insertion(TFD2_I_centree2,T1,a,K)
+TFD2_I2_tatoue = insertion(TFD2_I_centree2, T1, a, K)
 
 detection(65,TFD2_I2_tatoue , image_tatouee_inverse)
 
